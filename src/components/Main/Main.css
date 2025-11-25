@@ -2,10 +2,10 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-
   padding-left: 100px;
   min-height: 100vh;
-  padding-bottom: 50px;
+  /* Ensure space at the bottom so content doesn't get covered by a sticky footer */
+  padding-bottom: 120px;
   position: relative;
 }
 
@@ -86,11 +86,14 @@
 }
 
 .main-bottom {
-  position: absolute;
+  position: sticky;
   bottom: 0;
   width: 100%;
   max-width: 900px;
   padding: 0px 20px;
+  background: transparent;
+  margin-top: 60px;
+  z-index: 5;
 }
 .search-box {
   display: flex;
@@ -143,7 +146,7 @@
 
 .result {
   padding: 0 5px;
-  max-height: 70vh;
+  max-height: 90vh;
   overflow-y: scroll;
 }
 .result::-webkit-scrollbar{
@@ -256,11 +259,16 @@
 }
 
 .main-bottom {
-  position: absolute;
+  /* Make the bottom input stick to viewport bottom but allow the page to scroll normally
+     using sticky instead of absolute. This keeps the control visible while allowing
+     the page to grow as the content grows. */
+  position: sticky;
   bottom: 0;
   width: 100%;
   max-width: 900px;
   padding: 0px 20px;
+  background: transparent; /* set background or a solid color if needed */
+  z-index: 5; /* sits above content when scrolling */
 }
 .search-box {
   display: flex;
@@ -283,11 +291,20 @@
 
 .result {
   padding: 0 5px;
-  max-height: 70vh;
-  overflow-y: scroll;
+  /* Allow the result area to occupy remaining viewport space and scroll internally
+     when needed but not prevent the whole page from scrolling. Adjust offset so
+     it accounts for the nav & bottom controls. */
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 }
-.result::-webkit-scrollbar {
-  display: none;  
+.result::-webkit-scrollbar{
+    /* Show a thinner scrollbar rather than hiding it completely — helps UX */
+    width: 6px;
+}
+.result::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,0.1);
+    border-radius: 4px;
 }
 .resultdata {
   display: flex;

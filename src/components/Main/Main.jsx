@@ -11,6 +11,7 @@ const Main = () => {
     resultData,
     setinput,
     input,
+
   } = useContext(Context);
   return (
     <div className="main">
@@ -95,7 +96,7 @@ const Main = () => {
                   <hr />
                 </div>
               ) : (
-                <div dangerouslySetInnerHTML={{ __html: resultData }} />
+                <p dangerouslySetInnerHTML={{ __html: resultData }} ></p>
               )}
             </div>
           </div>
@@ -110,8 +111,8 @@ const Main = () => {
               placeholder="Enter a prompt here"
             />
             <div className="img-search-box">
-              <img src={assets.gallery_icon} alt="" />
-              <img src={assets.mic_icon} alt="" />
+              {/* <img src={assets.gallery_icon} alt="" />
+              <img src={assets.mic_icon} alt="" /> */}
               <img onClick={() => callGemini()} src={assets.send_icon} alt="" />
             </div>
           </div>

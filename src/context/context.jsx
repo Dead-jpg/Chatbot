@@ -5,6 +5,7 @@ import runChat from "../config/gemini";
 export const Context = createContext();
 
 const ContextProvider = (props) => {
+
   const [input, setinput] = useState("");
   const [recentprompt, setrecentprompt] = useState("");
   const [previousprompt, setpreviousprompt] = useState([]);
@@ -21,6 +22,7 @@ const ContextProvider = (props) => {
 
   // condition when on clicking new chat
   const newchat =()=>{
+    
     setloading(false);
     setshowresult(false);
   }
@@ -29,6 +31,10 @@ const ContextProvider = (props) => {
     setResultData("");
     setloading(true);
     setshowresult(true);
+
+    //save prompt in sidebar
+
+
     let response;
 
     if (prompt !== undefined) {
@@ -43,6 +49,8 @@ const ContextProvider = (props) => {
       response = await runChat(input);
     }
 
+  
+    
     // removing two stars and adding bold text
     let responseArray = response.split("**");
     let newResponse = "";
@@ -63,6 +71,7 @@ const ContextProvider = (props) => {
       delayPara(i, nextword + " ");
     }
 
+   
     setloading(false);
     setinput("");
   };
@@ -80,6 +89,7 @@ const ContextProvider = (props) => {
     newchat,
   };
   return (
+    
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>
   );
 };
