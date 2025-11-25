@@ -6,6 +6,12 @@ This is a modern, responsive **AI Chatbot** application built with React. It pro
 
 The application is designed to offer a seamless and engaging user experience, demonstrating proficiency in front-end development, API integration, and state management.
 
+🚀 **Live Demo:**  
+
+The project is live and hosted on Netlify. 
+
+🔗 **Visit here:** https://69257db1ff401140449f54b2--chatbot-96.netlify.app/
+
 ---
 
 ## ⚙️ Technologies Used
