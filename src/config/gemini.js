@@ -8,7 +8,7 @@ const MODEL_NAME = "gemini-2.0-flash";
 
 const API_KEY =
   import.meta.env.VITE_GEMINI_API_KEY ||
-  "AIzaSyBKoewRHXAJD5XiQs_wISsbfqMol-iENbI";
+  "AIzaSyAcsJwMm-vNqIXXokfl6Xe7M4zWi0gXOYY";
 
 export default async function runChat(prompt) {
   const genAI = new GoogleGenerativeAI(API_KEY);
@@ -19,7 +19,6 @@ export default async function runChat(prompt) {
     topP: 1,
     maxOutputTokens: 2048,
   };
-
 
   const safetySettings = [
     {
